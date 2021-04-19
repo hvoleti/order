@@ -1,0 +1,153 @@
+<html>
+    <head>
+        <style>
+            h3
+            {
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                font-size: bolder;
+                text-align: center;
+            }
+            body
+            {
+                background-color: sandybrown;
+            }
+            tr
+            {
+                background-color: lightgoldenrodyellow;
+                color: black;
+            }
+            dt
+            {
+                background-color: lightgoldenrodyellow;
+                color: black;
+            }
+        
+        </style>
+        <title>
+            Cafe Connect
+        </title>
+        <link rel="shortcut icon" href="coffee-logo-260nw-514803028.webp" type="image/x-icon">
+    </head>
+    <script>
+        function placeOrder(){
+            document.getElementById("ordersummary").style.display="block";
+            Uname=document.getElementById("txtName");
+            mobile=document.getElementById("txtMobile");
+            burger=document.getElementById("optBurger");
+            pasta=document.getElementById("optPasta");
+            fries=document.getElementById("optFries");
+            bread=document.getElementById("optBread");
+
+            var mealcost=0;
+            var addcost=0;
+
+            var mealname= "";
+            var addname="";
+            
+            if(burger.checked)
+            {
+                mealcost= 200;
+                mealname= burger.value;
+            }
+            if(pasta.checked)
+            {
+                mealcost = 250;
+                mealname= pasta.value;
+            }
+            if(fries.checked)
+            {
+                addcost= 80;
+                mealcost+=addcost;
+                addname+= fries.value+ "<br>";
+            }
+
+            if(bread.checked)
+            {
+                addcost=150;
+                mealcost+=addcost;
+                addname+= bread.value+ "<br>";
+            }
+
+            document.getElementById("username").innerHTML=Uname.value;
+            document.getElementById("usermobile").innerHTML=mobile.value;
+            document.getElementById("usermeal").innerHTML=mealname;
+            document.getElementById("useraddon").innerHTML=addname;
+            document.getElementById("usertotal").innerHTML=mealcost;
+        }
+    </script>
+    <body>
+        <div>
+            <font size="6">
+                <table width="600" border="2" cellspacing="1" cellpadding="4" align="center" id="orderform">
+                </font>
+                    <tr>
+                        <td colspan="2">
+                            <h3>  Welcome to Cafe Connect </h3>
+                           
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">Customer Details</td>
+                    </tr>
+                    <tr>
+                        <td>Customer Name</td>
+                        <td><input type="text" id="txtName"></td>
+                    </tr>
+                    <tr>
+                        <td>Mobile</td>
+                        <td><input type="text" id="txtMobile"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="burgers.jpg" width="200" height="200" style="border:5px solid black; margin-left: 30px;">
+                            <br>
+                            <input type="radio" name="meal" id="optBurger" value="Burger">Burger(&#8377;200/-)
+
+                        </td>
+                        <td>
+                            <img src="pasta.jpg" width="200" height="200" style="border:5px solid black; margin-left: 30px;">
+                            <br>
+                            <input type="radio" name="meal" id="optPasta" value="Pasta">Pasta(&#8377;250/-)
+                        </td>
+                    </tr> 
+                    <tr>
+                        <td colspan="2" align="center">
+                        Select Add-ons
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="fries.jpg" width="200" height="200" style="border:5px solid black; margin-left: 30px;">
+                            <input type="checkbox" id="optFries" value="Fries">French Fries(&#8377;80/-);
+                        </td>
+
+                        <td>
+                            <img src="bread.jpg" width="200" height="200" style="border:5px solid black; margin-left: 30px;">
+                            <input type="checkbox" id="optBread" value="Garlic Bread">Garlic Bread(&#8377;150/-);
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="button" value="place order" onclick="placeOrder()">
+                        </td>
+                    </tr>
+                </table>
+                <br>
+                  <dl id="ordersummary" style="display:none;">
+                    <h2>Order Summary</h2>
+                    <dt>Customer Name</dt>
+                    <dd id="username"></dd>
+                    <dt>Mobile</dt>
+                    <dd id="usermobile"></dd>
+                    <dt>Meal</dt>
+                    <dd id="usermeal"></dd>
+                    <dt>Add-ons</dt>
+                    <dd id="useraddon"></dd>
+                    <dt>Total bill payment:</dt>
+                    <dd id="usertotal"></dd>
+                <br>
+                  </dl>
+            
+        </div>
+    </body>
+</html>
